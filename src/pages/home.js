@@ -2,8 +2,8 @@ import Button from '../components/button.js';
 import Input from '../components/input.js';
 
 function buttonLogin() {
-  const email = document.querySelector('.js-email-input').value;
-  const password = document.querySelector('.js-password-input').value;
+  const email = document.querySelector('.email').value;
+  const password = document.querySelector('.password').value;
   firebase.auth().signInWithEmailAndPassword(email, password)
     .then((firebaseUser) => {
       window.location.hash = '#feed';
@@ -21,7 +21,7 @@ function buttonLogin() {
 }
 
 function googleLogin() {
-  let provider = new firebase.auth.GoogleAuthProvider();
+  const provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider).then((result) => {
     // This gives you a Google Access Token. You can use it to access the Google API.
     let token = result.credential.accessToken;
@@ -29,15 +29,6 @@ function googleLogin() {
     let user = result.user;
     // ...
     window.location.hash = '#feed';
-  }).catch((error) => {
-    // Handle Errors here.
-    let errorCode = error.code;
-    let errorMessage = error.message;
-    // The email of the user's account used.
-    let email = error.email;
-    // The firebase.auth.AuthCredential type that was used.
-    let credential = error.credential;
-    // ...
   });
 }
 
@@ -49,6 +40,7 @@ function Home() {
       <h3>Bem-vinda!</h3>
     </header>
     <main class='home'>
+    <form>
     ${Input({
     class: 'email', placeholder: 'Email', type: 'email', name: 'email',
   })}
@@ -58,7 +50,8 @@ function Home() {
     ${Button({
     class: 'login', title: 'Entrar', id: 'button', onClick: buttonLogin,
   })}
-    <p>Ou entre com o <button class='google' onClick=${googleLogin}><img src= ./images/icon.png width="30"></button></p>
+  </form>
+    <p>Ou entre com o <button class='google' onClick=${googleLogin()}><img src= ./images/icon.png width="30"></button></p>
 
     <p>Não tem conta? <a href='#register'>Registre-se</a>
     </main>
