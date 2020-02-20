@@ -3,6 +3,7 @@ function Input(props) {
       <input class="${props.class}" 
       placeholder="${props.placeholder}" 
       type="${props.type}" 
+      id="${props.id}"
       name="${props.name}">
       `;
   return template;

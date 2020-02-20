@@ -20,7 +20,7 @@ header h1 {
   margin: 8px;
 }
 
-main.home form, main.register {
+main.home form, main.register form {
   display: flex;
   flex-direction: column;
   align-items: center;

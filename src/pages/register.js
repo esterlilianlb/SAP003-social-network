@@ -1,6 +1,22 @@
 import Button from '../components/button.js';
 import Input from '../components/input.js';
 
+function buttonRegister() {
+  const email = document.getElementById('emailReg').value;
+  const password = document.getElementById('passwordReg').value;
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then((user) => {
+      window.location.hash = '#feed';
+      console.log(user);
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorMessage);
+      console.log(errorCode);
+    });
+}
+
 function Register() {
   const template = `
     <header>
@@ -9,18 +25,20 @@ function Register() {
       <h3>Bem-vinda!</h3>
     </header>
     <main class='register'>
+    <form>
     ${Input({
-    class: 'name', placeholder: 'Nome', type: 'text', name: 'name',
+    id: 'nameReg', placeholder: 'Nome', type: 'text', name: 'name',
   })}
     ${Input({
-    class: 'email', placeholder: 'Email', type: 'email', name: 'email',
+    id: 'emailReg', placeholder: 'Email', type: 'email', name: 'email',
   })}
     ${Input({
-    class: 'password', placeholder: 'Senha', type: 'password', name: 'password',
+    id: 'passwordReg', placeholder: 'Senha', type: 'password', name: 'password',
   })}
     ${Button({
-    class: 'register', title: 'Registrar', id: 'button',
+    class: 'register', title: 'Registrar', id: 'button', onClick: buttonRegister,
   })}
+    </form>
     <a href='#home'>Voltar</a>
     </main>
   `;
