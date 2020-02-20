@@ -59,3 +59,45 @@ button.google {
 main.register a {
   margin-top: 60px;
 }
+
+header.feed {
+  background-color: #ACA2B0;
+}
+
+div.user {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 8%;
+}
+
+div.photo {
+  background-color: #ACA2B0;
+  border-radius: 100%;
+  border: 1px solid black;
+  width: 80px;
+  height: 80px;
+}
+
+form.post {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  height: 20vh;
+}
+
+form.post input {
+  margin: 10px;
+  height: 10vh;
+  padding: 10px;
+}
+
+form.post button {
+  margin: 10px;
+}
+
+section.align {
+  display: flex;
+  justify-content: center;
+}
