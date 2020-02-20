@@ -1,0 +1,25 @@
+[debug] [2020-02-20T15:03:22.123Z] ----------------------------------------------------------------------
+[debug] [2020-02-20T15:03:22.128Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] [2020-02-20T15:03:22.129Z] CLI Version:   7.10.0
+[debug] [2020-02-20T15:03:22.129Z] Platform:      linux
+[debug] [2020-02-20T15:03:22.129Z] Node Version:  v12.13.1
+[debug] [2020-02-20T15:03:22.263Z] Time:          Thu Feb 20 2020 12:03:22 GMT-0300 (GMT-03:00)
+[debug] [2020-02-20T15:03:22.264Z] ----------------------------------------------------------------------
+[debug] [2020-02-20T15:03:22.264Z] 
+[debug] [2020-02-20T15:03:22.326Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-02-20T15:03:22.326Z] > authorizing via signed-in user
+[debug] [2020-02-20T15:03:22.326Z] [iam] checking project social-network-26f66 for permissions ["firebase.projects.get"]
+[debug] [2020-02-20T15:03:22.329Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/social-network-26f66:testIamPermissions  
+
+[debug] [2020-02-20T15:03:23.569Z] <<< HTTP RESPONSE 200
+[debug] [2020-02-20T15:03:23.573Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/social-network-26f66  
+ 
+[debug] [2020-02-20T15:03:24.057Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/home/ester/ester-git/social-network'...
+[info] 
+[debug] [2020-02-20T15:03:24.065Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/social-network-26f66/webApps/-/config  
+ 
+[debug] [2020-02-20T15:03:25.392Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: src
+[info] ✔  hosting: Local server: http://localhost:5000
