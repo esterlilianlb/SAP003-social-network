@@ -42,16 +42,16 @@ function Home() {
     <main class='home'>
     <form>
     ${Input({
-    class: 'email', placeholder: 'Email', type: 'email', name: 'email',
+    id: 'emailLogin', class: 'email', placeholder: 'Email', type: 'email', name: 'email',
   })}
     ${Input({
-    class: 'password', placeholder: 'Senha', type: 'password', name: 'password',
+    id: 'passwordLogin', class: 'password', placeholder: 'Senha', type: 'password', name: 'password',
   })}
     ${Button({
     class: 'login', title: 'Entrar', id: 'button', onClick: buttonLogin,
   })}
   </form>
-    <p>Ou entre com o <button class='google' onClick=${googleLogin()}><img src= ./images/icon.png width="30"></button></p>
+    <p>Ou entre com o ${Button({ class: 'google', onClick: googleLogin, title: '<img src= ./images/icon.png width="30">' })}</p>
 
     <p>Não tem conta? <a href='#register'>Registre-se</a>
     </main>
