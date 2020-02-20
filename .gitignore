@@ -3,3 +3,8 @@
 coverage/
 node_modules/
 .firebase/
+firestore.indexes.json
+firestore.rules
+
+
+

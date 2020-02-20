@@ -9,37 +9,35 @@ function logout() {
   });
 }
 
+function loadPosts() {
+  const postList = document.getElementById('postdiv');
+  firebase.firestore().collection('posts')
+    .onSnapshot((snap) => {
+      snap.forEach((post) => {
+        const posts = post.data().text;
+        postList.innerHTML = posts;
+      });
+    });
+}
+loadPosts();
+
+
 function formSubmit() {
-  const text = document.querySelector('.postText').value;
+  const text = document.querySelector('.postText');
   const id = firebase.auth().currentUser.uid;
+  const db = firebase.firestore();
   const post = {
-    text,
+    text: text.value,
+    date: new Date(),
     user: id,
     likes: 0,
-    comments: [],
   };
-  firebase.firestore().collection('posts').add(post)
-    .then((docRef) => {
-      const printPost = document.querySelector('.postSection');
-      const template = `
-    <div class='postCard'>
-    <div class'postLikes' id='gostei${postId}'>${id}    <p class='likes'>Likes:${post.data().likes}</p></div>
-    <div class='buttons'>
-    ${window.button.component({
-    dataId: postId,  class: 'like', title:'❤️', onClick: likePost})}
-    ${window.button.component({
-    dataId: postId, class: 'delete', title:'🗑️', onClick: deleteButton})}
-    </div>
-    <p class='text'>    
-    ${post.data().text}  
-    </p>
-    
-  </div>
-      `;
-      printPost.innerHTML += template;
+  db.collection('posts').add(post)
+    .then(() => {
+      text.value = '';
     });
-  text.value = '';
 }
+
 
 function Timeline() {
   const template = `
@@ -55,13 +53,13 @@ function Timeline() {
     </div>
     <section class='align'>
         <form class='post'>
-            ${Input({ class: 'postText', placeholder: 'O que você está pensando?', type: 'textarea' })}
+            ${Input({ id: 'postText', class: 'postText', placeholder: 'O que você está pensando?', type: 'text' })}
             ${Button({
-    class: 'sendPost', title: 'Postar', id: 'button',
+    class: 'sendPost', title: 'Postar', id: 'button', onClick: formSubmit,
   })}
         </form>
     </section>
-    <section class='postSection'></section>
+    <div id='postdiv'></div>
     `;
 
 
