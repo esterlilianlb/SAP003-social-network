@@ -19,26 +19,26 @@ function formSubmit() {
     comments: [],
   };
   firebase.firestore().collection('posts').add(post)
-  .then((docRef) => {
-    const printPost = document.querySelector('.postdiv');
-    const template = `
+    .then((docRef) => {
+      const printPost = document.querySelector('.postSection');
+      const template = `
     <div class='postCard'>
     <div class'postLikes' id='gostei${postId}'>${id}    <p class='likes'>Likes:${post.data().likes}</p></div>
     <div class='buttons'>
-    ${window.button.component({dataId: postId,  class: 'like', title:'❤️', onClick: likePost})}
-    ${window.button.component({dataId: postId, class: 'delete', title:'🗑️', onClick: deleteButton})}
+    ${window.button.component({
+    dataId: postId,  class: 'like', title:'❤️', onClick: likePost})}
+    ${window.button.component({
+    dataId: postId, class: 'delete', title:'🗑️', onClick: deleteButton})}
     </div>
     <p class='text'>    
     ${post.data().text}  
     </p>
     
   </div>
-      `
-    printPost.innerHTML += template
-  })
-    text.value = ''
-    
-};
+      `;
+      printPost.innerHTML += template;
+    });
+  text.value = '';
 }
 
 function Timeline() {
